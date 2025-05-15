@@ -4,9 +4,10 @@ import os
 
 router = APIRouter()
 
-templates_dir = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'templates')
+# Configure Jinja2 templates
+templates_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates')
 templates = Jinja2Templates(directory=templates_dir)
 
-@router.get("/chat")
+@router.get("/")
 async def chat_page(request: Request):
     return templates.TemplateResponse("chat.html", {"request": request})
